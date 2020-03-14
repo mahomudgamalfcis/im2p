@@ -19,6 +19,8 @@ cmd:option('-final_nms_thresh', 0.4)
 cmd:option('-num_proposals', 1000)
 cmd:option('-boxes_per_image', 100)
 
+cmd:option('-input_image', '',
+  'A path to a single specific image to caption')
 cmd:option('-input_txt', '')
 cmd:option('-max_images', 0)
 cmd:option('-output_h5', '')
