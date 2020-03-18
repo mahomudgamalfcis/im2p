@@ -2,7 +2,7 @@ require 'torch'
 require 'nn'
 require 'image'
 
-require 'densecap.DenseCapModel'
+require '/content/densecap/densecap/DenseCapModel.lua'
 local utils = require 'densecap.utils'
 local box_utils = require 'densecap.box_utils'
 local vis_utils = require 'densecap.vis_utils'
