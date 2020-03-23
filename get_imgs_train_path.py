@@ -3,7 +3,7 @@
 import os
 import glob
 
-train_images_path = "/home/chenxp/data/genome/im2p_train"
+train_images_path = "/content/im2p/data/im2p_train"
 train_images = glob.glob(train_images_path + "/*.jpg")
 
 f = open("imgs_train_path.txt", "w")
