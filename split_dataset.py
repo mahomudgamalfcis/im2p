@@ -5,16 +5,16 @@ import glob
 import json
 import subprocess
 
-genome_VG_100K_path = "/home/chenxp/data/genome/VG_100K"
-genome_VG_100K_2_path = "/home/chenxp/data/genome/VG_100K_2"
+genome_VG_100K_path = "/content/im2p/data/VG"
+genome_VG_100K_2_path = "/content/im2p/data/VG2"
 
-train_json_path = "/home/chenxp/hitachi/Hierarchical_RNN/data/train_split.json"
-val_json_path = "/home/chenxp/hitachi/Hierarchical_RNN/data/val_split.json"
-test_json_path = "/home/chenxp/hitachi/Hierarchical_RNN/data/test_split.json"
+train_json_path = "/content/im2p/data/train_split.json"
+val_json_path = "/content/im2p/data/val_split.json"
+test_json_path = "/content/im2p/data/test_split.json"
 
-train_savepath = "/home/chenxp/data/genome/im2p_train"
-val_savepath = "/home/chenxp/data/genome/im2p_val"
-test_savepath = "/home/chenxp/data/genome/im2p_test"
+train_savepath = "/content/im2p/data/im2p_train"
+val_savepath = "/content/im2p/data/im2p_val"
+test_savepath = "/content/im2p/data/im2p_test"
 
 all_images = glob.glob(genome_VG_100K_path + "/*.jpg")
 all_images_2 = glob.glob(genome_VG_100K_2_path + "/*.jpg")
@@ -31,9 +31,9 @@ with open(val_json_path, "r") as fr2:
 with open(test_json_path, "r") as fr3:
     test_names = json.load(fr3)
 
-print "train images num: {}".format(len(train_names))
-print "val images num: {}".format(len(val_names))
-print "test images num: {}".format(len(test_names))
+print ("train images num: {}".format(len(train_names)))
+print ("val images num: {}".format(len(val_names)))
+print ("test images num: {}".format(len(test_names)))
 
 for idx, img in enumerate(all_images):
     #print "idx: {}  {}".format(idx, img)
