@@ -128,7 +128,7 @@ class RegionPooling_HierarchicalRNN():
         lambda_sent = 5.0
         lambda_word = 1.0
 
-        print 'Start build model:'
+        print ('Start build model:')
         #----------------------------------------------------------------------------------------------
         # Hierarchical RNN: sentence RNN and words RNN
         # The word RNN has the max number, N_max = 50, the number in the papar is 50
@@ -219,7 +219,7 @@ class RegionPooling_HierarchicalRNN():
         T_stop = tf.constant(0.5)
 
         # Start build the generation model
-        print 'Start build the generation model: '
+        print ('Start build the generation model: ')
 
         # sentence RNN
         #word_state = self.word_LSTM.zero_state(batch_size=1, dtype=tf.float32)
@@ -294,7 +294,7 @@ class RegionPooling_HierarchicalRNN():
 # -----------------------------------------------------------------------------------------------------
 def preProBuildWordVocab(sentence_iterator, word_count_threshold=5):
     # borrowed this function from NeuralTalk
-    print 'preprocessing word counts and creating vocab based on word count threshold %d' % (word_count_threshold, )
+    print( 'preprocessing word counts and creating vocab based on word count threshold %d' % (word_count_threshold, ))
 
     word_counts = {}
     nsents = 0
@@ -309,7 +309,7 @@ def preProBuildWordVocab(sentence_iterator, word_count_threshold=5):
            word_counts[w] = word_counts.get(w, 0) + 1
 
     vocab = [w for w in word_counts if word_counts[w] >= word_count_threshold]
-    print 'filtered words from %d to %d' % (len(word_counts), len(vocab))
+    print ('filtered words from %d to %d' % (len(word_counts), len(vocab)))
 
     ixtoword = {}
     ixtoword[0] = '<bos>'
@@ -357,7 +357,7 @@ S_max = 6
 N_max = 30
 T_stop = 0.5
 
-n_epochs = 500
+n_epochs = 1
 learning_rate = 0.0001
 
 
@@ -541,8 +541,8 @@ def train():
             loss_to_draw_epoch.append(loss_val)
 
             # running information
-            print 'idx: ', start, ' Epoch: ', epoch, ' loss: ', loss_val, ' loss_sent: ', loss_sent, ' loss_word: ', loss_word, ' Time cost: ', str((time.time() - start_time))
-            loss_fd.write('epoch ' + str(epoch) + ' loss ' + str(loss_val))
+            print ('idx: ', start, ' Epoch: ', epoch, ' loss: ', loss_val, ' loss_sent: ', loss_sent, ' loss_word: ', loss_word, ' Time cost: ', str((time.time() - start_time))
+            loss_fd.write('epoch ' + str(epoch) + ' loss ' + str(loss_val)))
 
         # draw loss curve every epoch
         loss_to_draw.append(np.mean(loss_to_draw_epoch))
@@ -552,8 +552,8 @@ def train():
         plt.grid(True)
         plt.savefig(os.path.join(plt_save_dir, plt_save_img_name))
 
-        if np.mod(epoch, 10) == 0:
-            print "Epoch ", epoch, " is done. Saving the model ..."
+        if np.mod(epoch, 1) == 0:
+            print ("Epoch ", epoch, " is done. Saving the model ...")
             saver.save(sess, os.path.join(model_path, 'model'), global_step=epoch)
     loss_fd.close()
 
@@ -600,7 +600,7 @@ def test():
 
     test_fd = open('HRNN_results.txt', 'w')
     for idx, img_name in enumerate(test_imgs_names):
-        print idx, img_name
+        print (idx, img_name)
         test_fd.write(img_name + '\n')
 
         each_paragraph = []
@@ -646,6 +646,6 @@ def test():
 
         test_fd.write(current_paragraph + '\n')
     test_fd.close()
-    print "Time cost: " + str(time.time()-start_time)
+    print ("Time cost: " + str(time.time()-start_time))
 
 
